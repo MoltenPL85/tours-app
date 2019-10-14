@@ -1,0 +1,42 @@
+{
+  "name": "tours-app",
+  "version": "1.0.0",
+  "description": "Tours App on Node.JS",
+  "main": "app.js",
+  "scripts": {
+    "start:dev": "nodemon server.js",
+    "start:prod": "NODE_ENV=production nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MoltenPL85/tours-app.git"
+  },
+  "keywords": [
+    "node.js",
+    "pug",
+    "react"
+  ],
+  "author": "Max",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MoltenPL85/tours-app/issues"
+  },
+  "homepage": "https://github.com/MoltenPL85/tours-app#readme",
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
+    "nodemon": "^1.19.3",
+    "prettier": "^1.18.2"
+  },
+  "dependencies": {
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1"
+  }
+}
