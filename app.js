@@ -2,6 +2,8 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 
+const AppError = require('./utils/appError');
+const globalErrorHandler = require('./controllers/errorController');
 const tourRouter = require('./routes/tourRoutes');
 
 const app = express();
@@ -23,5 +25,11 @@ app.use((req, res, next) => {
 
 // ROUTES
 app.use('/api/v1/tours', tourRouter);
+
+app.all('*', (req, res, next) => {
+  next(new AppError(`${req.originalUrl} не найден на сервере!`, 404));
+});
+
+app.use(globalErrorHandler);
 
 module.exports = app;
