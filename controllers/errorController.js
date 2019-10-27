@@ -19,6 +19,15 @@ const handleValidationErrorDB = err => {
   return new AppError(message, 400);
 };
 
+const handleJWTError = () =>
+  new AppError('Неверный ключ! Пожалуйста, авторизуйтесь снова.', 401);
+
+const handleJWTExpiredError = () =>
+  new AppError(
+    'Время действия ключа истекло! Пожалуйста, авторизуйтесь снова.',
+    401
+  );
+
 const sendErrorDev = (err, res) => {
   res.status(err.statusCode).json({
     status: err.status,
@@ -67,6 +76,9 @@ module.exports = (err, req, res, next) => {
     if (error.code === 11000) error = handleDuplicateFieldsDB(error);
     if (error.name === 'ValidationError')
       error = handleValidationErrorDB(error);
+    if (error.name === 'JsonWebTokenError') error = handleJWTError(error);
+    if (error.name === 'TokenExpiredError')
+      error = handleJWTExpiredError(error);
 
     sendErrorProd(error, res);
   }
